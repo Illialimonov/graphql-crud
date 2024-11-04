@@ -30,6 +30,13 @@ public class DemoController {
         return bookRepository.findAll();
     }
 
+    @MutationMapping(name="deleteBook")
+    public Boolean deleteBook(@Argument Long id) {
+        bookRepository.deleteById(id);
+        return true;
+
+    }
+
     @MutationMapping
     Book addBook(@Argument BookInput book){
         Author author = authorRepository.findById(book.authorId());
